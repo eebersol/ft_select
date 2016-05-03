@@ -12,6 +12,30 @@
 
 #include <ft_select.h>
 
+void  	ft_save_select(t_select *select)
+{
+	t_list *list;
+	t_env 	*env;
+	
+// enlever virgule du dernier element, faire en sorte aue enter marche aussi quand on est sur une case deja surligne
+	list = select->env;
+	env = list->content;
+	tputs(tgetstr("cl", NULL), 0, tputs_putchar);
+	tputs(tgetstr("ho", NULL), 0, tputs_putchar);
+	while (list)
+	{
+		env = list->content;
+		if (env->is_mr == 1)
+		{
+			tputs(tgetstr("me", NULL), 0, tputs_putchar);
+			ft_putstr(env->arg_name);
+			if (list->next != NULL)
+				ft_putstr(", ");
+		}
+		list = list->next;
+	}
+}
+
 void	ft_select_unselect(t_select *select)
 {
 	t_env 	*env;

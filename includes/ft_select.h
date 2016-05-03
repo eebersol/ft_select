@@ -30,6 +30,7 @@
 # define LEFT ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 68))
 # define SPACE ((buffer[0] == 32))
 # define ESC ((buffer[0] == 27 && buffer[1] == 0))
+# define ENTER ((buffer[0] == 10 && buffer[1] == 91 && buffer[2] == 66))
 
 
 typedef struct termios	t_termios;
@@ -91,4 +92,7 @@ void	ft_get_col_li(t_select *select);
 // ft_space_key.c
 void	ft_select_unselect(t_select *select);
 void	ft_space_key(t_select *select);
+void	ft_save_select(t_select *select);
+
+
 #endif
