@@ -30,6 +30,7 @@ void	ft_get_col_li(t_select *select)
 		select->size_col = select->max_len;
 		select->col = (ft_lstlen(select->env) / select->max_li) + 1;
 	}
+	select->last_li =  (select->max_li * select->col - 1) - ft_lstlen(select->env);
 }
 
 void	ft_put_here(t_select *select, t_env *env)
@@ -77,9 +78,9 @@ void	ft_list_show(t_list *list)
 	{
 		env = cur->content;
 		tputs(tgetstr("cr", NULL), 0, tputs_putchar); //move the cursor to the beginning of the line
-		tputs(tgetstr("us", NULL), 0, tputs_putchar); // souligne
 		if (env->arg_name != NULL)
 			ft_put_here(select, env);
+		env->is_mr = 0;
 		cur = cur->next;
 	}
 	select->cur_col = 0;

@@ -37,7 +37,8 @@ typedef struct winsize	t_winsize;
 
 typedef struct 		s_env
 {
-	char			*arg_name;;
+	char			*arg_name;
+	int 			is_mr;
 }					t_env;
 
 typedef struct 		s_select
@@ -56,7 +57,9 @@ typedef struct 		s_select
 	int 			cur_col;
 	int 			win_count;
 	int				max_li;
+	int 			last_li;
 	int				index;
+	int 			first_process;
 
 }					t_select;
 
@@ -84,5 +87,8 @@ void		ft_get_col_line_max(t_select *select);
 void		ft_list_show(t_list *list);
 void		ft_arg_to_list(t_list **list, char **av);
 void	ft_get_col_li(t_select *select);
+
+// ft_space_key.c
+void	ft_select_unselect(t_select *select);
 void	ft_space_key(t_select *select);
 #endif

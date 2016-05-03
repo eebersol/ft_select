@@ -24,4 +24,5 @@ void	ft_init_select(t_select *select)
 	select->cur_col = 0;
 	select->win_count = 0;
 	select->max_len = 0;
+	select->first_process = 0;
 }
