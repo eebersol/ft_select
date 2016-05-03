@@ -18,16 +18,16 @@ void	ft_spot_control(t_select *select)
 	int 	ret;
 
  	ret = 0;
- 	while ((ret = read(0, buffer, 4)) != -1)
+ 	while ((ret = read(0, buffer, 5)) != -1)
  	{
-		if (buffer[0] == 27 || buffer[0] == 32)
+ 		if (IS_ARROW)
 		{
 			ft_move_where(select, buffer);
 			break ;
 		}
 		else if (ENTER)
 			ft_save_select(select);
-		else if (buffer[0] == 4 || buffer[0] == 3)
+		else if (CNTRL_C)
 			exit(1);
 	}
 }

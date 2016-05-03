@@ -16,8 +16,9 @@ void  	ft_save_select(t_select *select)
 {
 	t_list *list;
 	t_env 	*env;
+	int 	i;
 	
-// enlever virgule du dernier element, faire en sorte aue enter marche aussi quand on est sur une case deja surligne
+	i = 0;
 	list = select->env;
 	env = list->content;
 	tputs(tgetstr("cl", NULL), 0, tputs_putchar);
@@ -29,11 +30,15 @@ void  	ft_save_select(t_select *select)
 		{
 			tputs(tgetstr("me", NULL), 0, tputs_putchar);
 			ft_putstr(env->arg_name);
-			if (list->next != NULL)
+			i++;
+			if (i < select->count_mr)
 				ft_putstr(", ");
+			else if (i == select->count_mr)
+				ft_putchar('\n');
 		}
 		list = list->next;
 	}
+	exit (0);
 }
 
 void	ft_select_unselect(t_select *select)
@@ -48,6 +53,7 @@ void	ft_select_unselect(t_select *select)
 	{
 		tputs(tgetstr("mr", NULL), 0, tputs_putchar);
 		tputs(tgetstr("us", NULL), 0, tputs_putchar);
+		select->count_mr++;
 		env->is_mr = 1;
 		ft_putendl_fd(env->arg_name, 1);
 	}
@@ -55,6 +61,7 @@ void	ft_select_unselect(t_select *select)
 	{
 		tputs(tgetstr("me", NULL), 0, tputs_putchar);
 		env->is_mr = 0;
+		select->count_mr--;
 		ft_putendl_fd(env->arg_name, 1);
 	}
 }

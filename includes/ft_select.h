@@ -30,8 +30,9 @@
 # define LEFT ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 68))
 # define SPACE ((buffer[0] == 32))
 # define ESC ((buffer[0] == 27 && buffer[1] == 0))
-# define ENTER ((buffer[0] == 10 && buffer[1] == 91 && buffer[2] == 66))
-
+# define ENTER ((buffer[0] == 10)) //&& buffer[1] == 91 && buffer[2] == 66))
+# define IS_ARROW (buffer[0] == 27  || buffer[0] == 32)
+# define CNTRL_C (buffer[0] == 4 || buffer[0] == 3)
 
 typedef struct termios	t_termios;
 typedef struct winsize	t_winsize;
@@ -60,6 +61,7 @@ typedef struct 		s_select
 	int				max_li;
 	int 			last_li;
 	int				index;
+	int 			count_mr;
 	int 			first_process;
 
 }					t_select;

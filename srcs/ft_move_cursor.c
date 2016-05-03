@@ -30,13 +30,15 @@ void	ft_move_where(t_select *select, char *buffer)
 	{
 		if ((size_t)select->x >= (((select->col) * select->max_len) - select->max_len))
 			return ;
-		else if ((((select->x / select->max_len) * select->max_len) == (((select->col - 1) * select->max_len) - select->max_len))
-			&& ((size_t)select->y > select->last_li + select->col))
+		else if (((((size_t)select->x + select->max_len == (select->col - 1) * select->max_len))
+			&& ((select->y + 1) > select->last_li)))
 			return ;
 		else
 			select->x += select->max_len;
 	}
 	else if (SPACE)
 		ft_space_key(select);
+	else if (ENTER)
+		ft_save_select(select);
 	tputs(tgoto((tgetstr("cm", NULL)), select->x, select->y), 0, tputs_putchar);
 }

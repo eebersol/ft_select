@@ -30,7 +30,7 @@ void	ft_get_col_li(t_select *select)
 		select->size_col = select->max_len;
 		select->col = (ft_lstlen(select->env) / select->max_li) + 1;
 	}
-	select->last_li =  (select->max_li * select->col - 1) - ft_lstlen(select->env);
+	select->last_li =  ft_lstlen(select->env) - ((select->max_li - 1) * (select->col - 1));
 }
 
 void	ft_put_here(t_select *select, t_env *env)
