@@ -30,9 +30,10 @@
 # define LEFT ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 68))
 # define SPACE ((buffer[0] == 32))
 # define ESC ((buffer[0] == 27 && buffer[1] == 0))
-# define ENTER ((buffer[0] == 10)) //&& buffer[1] == 91 && buffer[2] == 66))
-# define IS_ARROW (buffer[0] == 27  || buffer[0] == 32)
+# define ENTER ((buffer[0] == 10))
+# define IS_ARROW (buffer[0] == 27)
 # define CNTRL_C (buffer[0] == 4 || buffer[0] == 3)
+# define DELETE (buffer[0] == 127)
 
 typedef struct termios	t_termios;
 typedef struct winsize	t_winsize;
@@ -41,6 +42,7 @@ typedef struct 		s_env
 {
 	char			*arg_name;
 	int 			is_mr;
+	int 			is_us;
 }					t_env;
 
 typedef struct 		s_select
@@ -55,7 +57,6 @@ typedef struct 		s_select
 	size_t 			li;
 	size_t 			max_len;
 	size_t			max_col;
-	size_t			size_col;
 	int 			cur_col;
 	int 			win_count;
 	int				max_li;
@@ -74,7 +75,7 @@ int 		tputs_putchar(int c);
 void		ft_init_window(t_select *select);
 
 // SIGNAL //
-void		ft_check_signal(void);
+void		ft_check_sig(void);
 void		ft_signal_quit(int sig);
 
 // UTIL //
@@ -94,7 +95,18 @@ void	ft_get_col_li(t_select *select);
 // ft_space_key.c
 void	ft_select_unselect(t_select *select);
 void	ft_space_key(t_select *select);
-void	ft_save_select(t_select *select);
+void  	ft_return_key(t_select *select);
+void	ft_delete_key(t_select *select);
+
+void	ft_ue_node(t_select *select);
+void	ft_us_node(t_select *select);
+void	ft_printf(t_select *select);
+
+// ft_arrow
+void	ft_arrow_top(t_select *select);
+void	ft_arrow_bot(t_select *select);
+void	ft_arrow_left(t_select *select);
+void	ft_arrow_right(t_select *select);
 
 
 #endif

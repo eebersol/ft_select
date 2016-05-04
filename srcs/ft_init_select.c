@@ -27,3 +27,18 @@ void	ft_init_select(t_select *select)
 	select->first_process = 0;
 	select->count_mr = 0;
 }
+
+void	ft_printf(t_select *select)
+{
+	printf("select->x = %dp\n", select->x);
+	printf("select->y = %dp\n", select->y);
+	printf("select->col = %zup\n", select->col);
+	printf("select->max_li = %dp\n", select->max_li);
+	printf("select->max_col = %zup\n", select->max_col);
+	printf("select->index = %dp\n", select->index);
+	printf("select->cur_col = %dp\n", select->cur_col);
+	printf("select->win_count = %dp\n", select->win_count);
+	printf("select->max_len = %zup\n", select->max_len);
+	printf("select->first_process = %d\n", select->first_process);
+	printf("select->count_mr = %dp\n", select->count_mr);
+}

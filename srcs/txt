@@ -1,0 +1,19 @@
+
+
+
+
+LEFT
+
+select->index -= select->max_li;
+
+TOP
+
+select->index -= 1;
+
+BOTTOM
+
+select->index += 1;
+
+RIGHT 
+
+select->index += select->max_li;

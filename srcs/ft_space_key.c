@@ -12,35 +12,6 @@
 
 #include <ft_select.h>
 
-void  	ft_save_select(t_select *select)
-{
-	t_list *list;
-	t_env 	*env;
-	int 	i;
-	
-	i = 0;
-	list = select->env;
-	env = list->content;
-	tputs(tgetstr("cl", NULL), 0, tputs_putchar);
-	tputs(tgetstr("ho", NULL), 0, tputs_putchar);
-	while (list)
-	{
-		env = list->content;
-		if (env->is_mr == 1)
-		{
-			tputs(tgetstr("me", NULL), 0, tputs_putchar);
-			ft_putstr(env->arg_name);
-			i++;
-			if (i < select->count_mr)
-				ft_putstr(", ");
-			else if (i == select->count_mr)
-				ft_putchar('\n');
-		}
-		list = list->next;
-	}
-	exit (0);
-}
-
 void	ft_select_unselect(t_select *select)
 {
 	t_env 	*env;
@@ -51,15 +22,29 @@ void	ft_select_unselect(t_select *select)
 	env = list->content;
 	if (env->is_mr == 0)
 	{
+		/*if (select->y == select->max_li - 1)
+		{
+			select->x +=select->max_len;
+			select->y = 0;
+			tputs(tgoto((tgetstr("cm", NULL)), select->x, select->y), 0, tputs_putchar);
+		}
+		else if ((size_t)select->x >= (((select->col) * select->max_len) - select->max_len) 
+			&& (select->y > select->last_li + 1))
+				return ;*/
 		tputs(tgetstr("mr", NULL), 0, tputs_putchar);
-		tputs(tgetstr("us", NULL), 0, tputs_putchar);
+		tputs(tgetstr("ue", NULL), 0, tputs_putchar);
 		select->count_mr++;
 		env->is_mr = 1;
 		ft_putendl_fd(env->arg_name, 1);
+		tputs(tgetstr("se", NULL), 0, tputs_putchar);
+		/*select->index++;
+		select->y++;*/
+		ft_arrow_bot(select);
+		tputs(tgoto((tgetstr("cm", NULL)), select->x, select->y), 0, tputs_putchar);
 	}
 	else
 	{
-		tputs(tgetstr("me", NULL), 0, tputs_putchar);
+		tputs(tgetstr("se", NULL), 0, tputs_putchar);
 		env->is_mr = 0;
 		select->count_mr--;
 		ft_putendl_fd(env->arg_name, 1);
@@ -75,5 +60,6 @@ void	ft_space_key(t_select *select)
 		select->index = select->y + ((select->x / select->max_len) * select->max_li)
 		- (1 * (select->x / select->max_len));
 	}
+	tputs(tgoto((tgetstr("cm", NULL)), select->x, select->y), 0, tputs_putchar);
 	ft_select_unselect(select);
 }

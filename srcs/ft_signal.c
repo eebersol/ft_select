@@ -34,7 +34,7 @@ void	ft_signal_quit(int sig)
 	exit(1);
 }
 
-void			ft_check_signal(void)
+void			ft_check_sig(void)
 {
 	signal(SIGQUIT, ft_signal_quit);
 	signal(SIGINT, ft_signal_quit);

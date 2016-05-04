@@ -26,7 +26,10 @@ _SRC			= 	ft_select.c \
 						ft_resize_window.c \
 						ft_signal.c \
 						ft_get_len_max.c \
-						ft_space_key.c
+						ft_space_key.c \
+						ft_return_key.c \
+						ft_delete_key.c \
+						ft_arrows.c
 
 
 INCLUDES		= -I./libft/includes/ -I./includes/

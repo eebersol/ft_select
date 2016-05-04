@@ -18,6 +18,9 @@ void	ft_init_window(t_select *select)
 	if (ioctl(0, TIOCGWINSZ, &select->win) != -1)
 	{
 		select->win_count++;
+		//ft_printf(select);
+		select->x = 0;
+		select->y = 0;
 		ft_list_show(select->env);
 	}
 }

@@ -26,9 +26,13 @@ void	ft_spot_control(t_select *select)
 			break ;
 		}
 		else if (ENTER)
-			ft_save_select(select);
+			ft_return_key(select);
 		else if (CNTRL_C)
 			exit(1);
+		else if (SPACE)
+			ft_space_key(select);
+		else if (DELETE)
+			ft_delete_key(select);
 	}
 }
 
@@ -60,7 +64,7 @@ int		main(int ac, char **av, char **tmp_env)
 		ft_error();
 	ft_init_select(select);
 	ft_term_init(select);
-	ft_check_signal();
+	ft_check_sig();
 	ft_arg_to_list(&select->env, av);
 	ft_list_show(select->env);
 	while (1)
