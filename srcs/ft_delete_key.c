@@ -27,8 +27,17 @@ static void	ft_free_node(void *content, size_t size)
 
 void	ft_delete_key(t_select *select)
 {
-	ft_lstdel_at(&select->env, select->index, &ft_free_node);
-	select->x = 0;
-	select->y = 0;
+	if (ft_lstlen(select->env) == 0)
+		exit (1);
+	else
+		ft_lstdel_at(&select->env, select->index, &ft_free_node);
+	select->y--;
+	if (select->y == 0)
+	{
+		select->x -= select->max_len;
+		select->y = select->max_li - 1;
+	}
+	//select->x = 0;
+	//select->y = 0;
 	ft_list_show(select->env);
 }

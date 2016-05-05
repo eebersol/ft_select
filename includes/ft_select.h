@@ -64,6 +64,8 @@ typedef struct 		s_select
 	int				index;
 	int 			count_mr;
 	int 			first_process;
+	int 			count_del;
+	int 			lst_len;
 
 }					t_select;
 
@@ -107,6 +109,10 @@ void	ft_arrow_top(t_select *select);
 void	ft_arrow_bot(t_select *select);
 void	ft_arrow_left(t_select *select);
 void	ft_arrow_right(t_select *select);
+int 	ft_check_firstwindow(t_select *select);
+int		ft_winsize_tosmall(t_select *select);
+void	ft_display_winsizetosmall(t_select *select);
+void	ft_first_display(t_select *select);
 
 
 #endif

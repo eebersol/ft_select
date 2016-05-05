@@ -66,7 +66,8 @@ int		main(int ac, char **av, char **tmp_env)
 	ft_term_init(select);
 	ft_check_sig();
 	ft_arg_to_list(&select->env, av);
-	ft_list_show(select->env);
+	if (ft_check_firstwindow(select) != 1)
+		ft_list_show(select->env);
 	while (1)
 	{
 		ft_spot_control(select);

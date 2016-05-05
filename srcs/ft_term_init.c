@@ -30,4 +30,5 @@ void	ft_term_init(t_select *select)
 		return ;
 	tputs(tgetstr("cl", NULL), 0, tputs_putchar);
 	tputs(tgetstr("ho", NULL), 0, tputs_putchar);
+	tputs(tgetstr("vi", NULL), 0, tputs_putchar);
 }
