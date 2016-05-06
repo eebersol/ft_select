@@ -1,0 +1,90 @@
+
+
+
+
+LEFT
+
+select->index -= select->max_li;
+
+TOP
+
+select->index -= 1;
+
+BOTTOM
+
+select->index += 1;
+
+RIGHT 
+
+select->index += select->max_li;
+
+
+
+
+
+void	ft_delete_key(t_select *select)
+{
+	if (ft_strlen(select->env) - 1 != 0)
+	{
+		select->deletes = 1;
+		ft_lstdel_at(&select->env, select->index, &ft_free_node);
+		if (select->x == 0 && select->y < 0)
+			ft_move_begin(select);
+		else if (select->x >= select->max_len && select->y < 0)
+			ft_moove_one(select);
+		else if (select->x >= select->max_len && select->y == 0)
+			ft_dont_moove(select);
+		else if (select->x == 0 && select->y > 0
+			&& select->y + 1 <= select->max_li - 2)
+			ft_arrow_bot(select);
+
+
+	}
+}
+
+
+
+
+
+
+
+void	ft_delete_key(t_select *select)
+{
+	select->deletes = 1;
+	if (ft_lstlen(select->env) - 1 == 0)
+		exit (1);
+	ft_lstdel_at(&select->env, select->index, &ft_free_node);
+	if (select->y <= 0 && (size_t)select->x > 0)
+	{
+		printf("                                     Xdel--%d Ydel--%d Idel---%d  X--%d Y--%d I---%d MAXX = %d\n", select->xdelete, select->ydelete, select->indexdelete, select->x, select->y, select->index, select->max_li - 2);										
+		select->xdelete = select->x;
+		select->ydelete = 0;
+		select->deletes = 5;
+		select->index += 2;
+		printf("                                     Xdel--%d Ydel--%d Idel---%d  X--%d Y--%d I---%d\n", select->xdelete, select->ydelete, select->indexdelete, select->x, select->y, select->index);										
+	}
+	else if (select->y < 0 && select->x == 0)
+	{
+			printf("                                        ICCCCCCCCCCCCIIIIIIIIIIIII\n");
+			select->y = 0;
+			select->x = 0;
+	}
+	else if (select->x == 0)
+	{
+		printf("                                        ICCCCCCCCCCCCIIIIIIIIIIIIIoooooooooooooooooo\n");
+		select->y++;
+		select->index += 2;
+	}
+	else 
+		select->index += 2;
+	//ft_un_us(select);
+	//printf("                                     Xdel--%d Ydel--%d Idel---%d  X--%d Y--%d I---%d\n", select->xdelete, select->ydelete, select->indexdelete, select->x, select->y, select->index);										
+	select->xdelete = select->x;
+	select->ydelete = select->y;
+	select->indexdelete = select->index - 1;
+	ft_arrow_bot(select);
+	ft_done_value(select);
+	select->y = 0;
+	select->x = 0;
+	ft_list_show(select->env);
+}
