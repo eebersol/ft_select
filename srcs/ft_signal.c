@@ -18,14 +18,15 @@ void	ft_signal_resize(int sig)
 	ft_init_window(ft_struct_select());
 }
 
-void 	ft_signal_background(int sig)
+void	ft_signal_background(int sig)
 {
 	char	cp[2];
 
 	cp[0] = ft_struct_select()->term.c_cc[VSUSP];
 	cp[1] = '\0';
 	(void)sig;
-	ft_init_select(ft_struct_select());
+	tputs(tgetstr("cl", NULL), 0, tputs_putchar);
+	ft_select_reset(ft_struct_select());
 	signal(SIGCONT, ft_check_sig);
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(0, TIOCSTI, cp);
@@ -47,7 +48,7 @@ void	ft_signal_quit(int sig)
 	exit(0);
 }
 
-void			ft_check_sig(int i)
+void	ft_check_sig(int i)
 {
 	signal(SIGWINCH, ft_signal_resize);
 	if (i == SIGTSTP)

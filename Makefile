@@ -17,21 +17,26 @@ NAME			= ft_select
 LIB				=	./libft/libft.a
 
 _SRC			= 	ft_select.c \
-						ft_list_show.c \
-						ft_arg_to_list.c \
+						ft_select_init.c \
 						ft_error.c \
 						ft_term_init.c  \
-						ft_init_select.c \
-						ft_move_cursor.c \
 						ft_signal.c \
-						ft_get_len_max.c \
-						ft_space_key.c \
-						ft_return_key.c \
-						ft_delete_key.c \
-						ft_arrows.c \
+						ft_bonus_col.c \
+						utils/ft_get_len_max.c \
+						utils/ft_arg_to_list.c \
+						utils/ft_list_show.c \
+						utils/ft_tputs.c \
+						utils/ft_free_node.c \
+						utils/ft_get_col_li_max.c \
+						utils/ft_check_first_index.c \
 						winsize/ft_resize_window.c \
 						winsize/ft_init_winsize.c \
-						ft_key_exit.c
+						key/ft_key_exit.c \
+						key/ft_key_arrows.c \
+						key/ft_key_delete.c \
+						key/ft_key_space.c \
+						key/ft_key_return.c \
+						key/ft_move_where.c
 
 
 INCLUDES		= -I./libft/includes/ -I./includes/

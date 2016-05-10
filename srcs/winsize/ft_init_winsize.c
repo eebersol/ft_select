@@ -12,7 +12,7 @@
 
 #include <ft_select.h>
 
-static 	void	ft_display_required(t_select *select)
+static	void	ft_display_required(t_select *select)
 {
 	tputs(tgetstr("md", NULL), 0, tputs_putchar);
 	ft_putendl_fd("\n\n[Window to small, please resize	. . . ]", 2);
@@ -49,20 +49,22 @@ static	void	ft_display_current(t_select *select)
 static	void	ft_display_winsize(t_select *select)
 {
 	tputs(tgetstr("cl", NULL), 0, tputs_putchar);
-	tputs(tgoto(NULL, (select->col / 2), (select->max_li/ 2)),
+	tputs(tgoto(NULL, (select->col / 2), (select->max_li / 2)),
 		0, tputs_putchar);
 	ft_display_required(select);
 	ft_display_current(select);
 }
 
-int 	ft_init_winsize(t_select *select)
+int				ft_init_winsize(t_select *select)
 {
 	ft_get_col_li(select);
-	if ((size_t)ft_lstlen(select->env) - 1 >= ((select->max_li - 1) * select->col)
-		|| ((select->max_col) <  select->col * select->max_len))
+	if (ft_lstlen(select->env) - 1 >
+		(((select->max_li - 1) * (select->max_col / select->max_len)))
+		&& ((select->max_col - (select->max_len * (select->col)))) <=
+		select->last_len)
 	{
-		ft_display_winsize(select);
-		return (1);
+			ft_display_winsize(select);
+			return (1);
 	}
 	else
 		return (0);
