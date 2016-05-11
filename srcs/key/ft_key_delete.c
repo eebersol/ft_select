@@ -123,5 +123,8 @@ void			ft_delete_key(t_select *select)
 		ft_list_show(select->env);
 	}
 	else
+	{
+		ft_select_reset(ft_struct_select());
 		exit(1);
+	}
 }
