@@ -63,8 +63,8 @@ int				ft_init_winsize(t_select *select)
 		&& ((select->max_col - (select->max_len * (select->col)))) <=
 		select->last_len)
 	{
-			ft_display_winsize(select);
-			return (1);
+		ft_display_winsize(select);
+		return (1);
 	}
 	else
 		return (0);

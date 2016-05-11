@@ -72,7 +72,7 @@ void			ft_put_here(t_select *select, t_env *env)
 	}
 }
 
-void	static 	ft_new_pos(t_select *select)
+void	static	ft_new_pos(t_select *select)
 {
 	select->x = select->xdelete;
 	select->y = select->ydelete;

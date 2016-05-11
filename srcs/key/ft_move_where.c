@@ -62,7 +62,6 @@ void	ft_move_where(t_select *select, char *buffer)
 	list = ft_lstget_at(select->env, select->index);
 	env = list->content;
 	ft_ue_node(select);
-	//printf("																						DELETEINDEX %d == INDEX %d -- %d\n", select->indexdelete, select->index, ft_lstlen(select->env));
 	if (LEFT)
 		ft_arrow_left(select);
 	else if (TOP)

@@ -40,10 +40,10 @@ static int		ft_winsize_tosmall(t_select *select)
 		(((select->win.ws_row - 1) * (select->win.ws_col / select->max_len)))
 		&& ((select->win.ws_col - (select->max_len * (select->col)))) <=
 		select->last_len)
-		{
-			ft_display_winsizetosmall(select);
-			return (1);
-		}
+	{
+		ft_display_winsizetosmall(select);
+		return (1);
+	}
 	else
 		return (0);
 }

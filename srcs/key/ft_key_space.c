@@ -29,7 +29,6 @@ static void	ft_unselect(t_select *select, t_env *env, t_list *list)
 		tputs(tgetstr("mr", NULL), 0, tputs_putchar);
 	tputs(tgetstr("us", NULL), 0, tputs_putchar);
 	ft_putendl_fd(env->arg_name, select->tty);
-
 }
 
 static void	ft_select(t_select *select, t_env *env, t_list *list)
