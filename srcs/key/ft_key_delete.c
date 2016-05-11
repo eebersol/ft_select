@@ -23,8 +23,6 @@ static void		ft_save_pos(t_select *select)
 	}
 	else if (select->y == 0 && select->x == 0)
 	{
-		select->ydelete  = 0;
-		select->xdelete = 0;
 		select->indexdelete = 0;
 		select->first_us_delete = 0;
 	}
@@ -56,8 +54,7 @@ static	void	ft_check_selected(t_select *select)
 		{
 			if (select->index + 1 != ft_lstlen(select->env))
 			{
-				cur = select->env;
-				cur = ft_lstget_at(cur, select->index + 1);
+				cur = cur->next;
 				env = cur->content;
 				if (env->is_mr == 1)
 					env->is_mr = 1;
@@ -65,7 +62,8 @@ static	void	ft_check_selected(t_select *select)
 					env->is_mr = 0;
 			}
 		}
-		if (select->index == 0 && env->is_us == 0 && select->deletes == 2)
+		if (select->index == 0 && env->is_us == 0 && select->deletes == 2
+			&& ft_lstlen(select->env) > 2)
 		{
 			cur = select->env;
 			cur = ft_lstget_at(cur, 1);
@@ -80,8 +78,8 @@ static	void	ft_check_selected(t_select *select)
 
 static	void	ft_done_value(t_select *select)
 {
-	t_env *env;
-	t_list *cur;
+	t_env	*env;
+	t_list	*cur;
 
 	cur = select->env;
 	if (select->index > 0 && select->index != ft_lstlen(select->env))
@@ -89,10 +87,6 @@ static	void	ft_done_value(t_select *select)
 		cur = ft_lstget_at(cur, select->index);
 		env = cur->content;
 		env->is_us = 1;
-		cur = ft_lstget_at(cur, select->index + 1);
-		cur = select->env;
-		env = cur->content;
-		env->is_us = 0;
 	}
 	else if (select->index == ft_lstlen(select->env))
 	{

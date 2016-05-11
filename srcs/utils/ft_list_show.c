@@ -14,7 +14,6 @@
 
 void			ft_check_is_mr(t_select *select, t_env *env)
 {
-	(void)env;
 	tputs(tgetstr("mr", NULL), 0, tputs_putchar);
 	if (select->indexdelete + select->cur_col == select->index)
 	{
@@ -22,12 +21,6 @@ void			ft_check_is_mr(t_select *select, t_env *env)
 			tputs(tgetstr("us", NULL), 0, tputs_putchar);
 		env->is_us = 0;
 	}
-	/*else if (select->indexdelete != (select->index))
-	{
-		printf(" 							LOLOLOLOLOLOLOLO					\n");			
-		tputs(tgetstr("ue", NULL), 0, tputs_putchar);
-		env->is_us = 0;
-	}*/
 }
 
 void			ft_check_status(t_select *select, t_env *env)
@@ -77,10 +70,9 @@ void			ft_put_here(t_select *select, t_env *env)
 		select->index++;
 		ft_put_here(select, env);
 	}
-
 }
 
-void	static ft_new_pos(t_select *select)
+void	static 	ft_new_pos(t_select *select)
 {
 	select->x = select->xdelete;
 	select->y = select->ydelete;

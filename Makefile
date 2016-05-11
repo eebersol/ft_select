@@ -21,7 +21,6 @@ _SRC			= 	ft_select.c \
 						ft_error.c \
 						ft_term_init.c  \
 						ft_signal.c \
-						ft_bonus_col.c \
 						utils/ft_get_len_max.c \
 						utils/ft_arg_to_list.c \
 						utils/ft_list_show.c \
@@ -45,7 +44,7 @@ SRC				= $(addprefix srcs/,$(_SRC))
 
 OBJ				= $(SRC:.c=.o)
 
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
