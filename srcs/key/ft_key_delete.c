@@ -12,7 +12,8 @@
 
 #include <ft_select.h>
 
-static	void 		ft_check_selected_bis(t_select *select, t_list *cur, t_env *env)
+static	void	ft_check_selected_bis(t_select *select, t_list *cur,
+										t_env *env)
 {
 	cur = select->env;
 	cur = ft_lstget_at(cur, 1);
@@ -23,7 +24,7 @@ static	void 		ft_check_selected_bis(t_select *select, t_list *cur, t_env *env)
 	select->first_us_delete = 1;
 }
 
-static 	void		ft_save_pos(t_select *select)
+static	void	ft_save_pos(t_select *select)
 {
 	if (select->y == 0 && select->x > 0
 		&& select->index == ft_lstlen(select->env))

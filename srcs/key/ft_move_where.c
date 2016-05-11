@@ -22,7 +22,7 @@ static	void	ft_check_index(t_select *select)
 	}
 }
 
-void	ft_ue_node(t_select *select)
+void			ft_ue_node(t_select *select)
 {
 	t_env	*env;
 	t_list	*list;
@@ -38,7 +38,7 @@ void	ft_ue_node(t_select *select)
 	ft_putendl_fd(env->arg_name, select->tty);
 }
 
-void	ft_us_node(t_select *select)
+void			ft_us_node(t_select *select)
 {
 	t_env	*env;
 	t_list	*list;
@@ -54,7 +54,7 @@ void	ft_us_node(t_select *select)
 	ft_putendl_fd(env->arg_name, select->tty);
 }
 
-void	ft_move_where(t_select *select, char *b)
+void			ft_move_where(t_select *select, char *b)
 {
 	t_env	*env;
 	t_list	*list;
