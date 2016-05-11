@@ -25,17 +25,17 @@
 # include <signal.h>
 # include <fcntl.h>
 
-# define TOP ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 65))
-# define BOTTOM ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 66))
-# define RIGHT ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 67))
-# define LEFT ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 68))
-# define SPACE ((buffer[0] == 32))
-# define ESC ((buffer[0] == 27 && buffer[1] == 0) && buffer[3] == 0)
-# define ENTER ((buffer[0] == 10))
-# define IS_ARROW (buffer[0] == 27)
-# define CNTRL_C (buffer[0] == 4 || buffer[0] == 3)
-# define BACK_SPACE (buffer[0] == 127)
-# define DELETE ((buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 51 && buffer[3] == 126))
+# define TOP ((b[0] == 27 && b[1] == 91 && b[2] == 65))
+# define BOTTOM ((b[0] == 27 && b[1] == 91 && b[2] == 66))
+# define RIGHT ((b[0] == 27 && b[1] == 91 && b[2] == 67))
+# define LEFT ((b[0] == 27 && b[1] == 91 && b[2] == 68))
+# define SPACE ((b[0] == 32))
+# define ESC ((b[0] == 27 && b[1] == 0) && b[3] == 0)
+# define ENTER ((b[0] == 10))
+# define IS_ARROW (b[0] == 27)
+# define CNTRL_C (b[0] == 4 || b[0] == 3)
+# define BACK_SPACE (b[0] == 127)
+# define DELETE ((b[0] == 27 && b[1] == 91 && b[2] == 51 && b[3] == 126))
 
 typedef struct termios	t_termios;
 typedef struct winsize	t_winsize;
@@ -98,7 +98,7 @@ void				ft_arrow_left(t_select *select);
 void				ft_arrow_right(t_select *select);
 void				ft_ue_node(t_select *select);
 void				ft_us_node(t_select *select);
-void				ft_move_where(t_select *select, char *buffer);
+void				ft_move_where(t_select *select, char *b);
 int					ft_lstlen(t_list *list);
 void				ft_arg_to_list(t_list **list, char **av);
 size_t				ft_get_len_max(t_list *list, t_select *select);

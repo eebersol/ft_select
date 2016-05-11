@@ -116,6 +116,7 @@ void			ft_delete_key(t_select *select)
 		select->cur_col = 0;
 		select->y = 0;
 		select->x = 0;
+		tputs(tgetstr("ue", NULL), 0, tputs_putchar);
 		ft_list_show(select->env);
 	}
 	else

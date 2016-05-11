@@ -29,6 +29,8 @@ void	ft_arrow_top(t_select *select)
 	}
 	else if (select->deletes == 0)
 		select->index--;
+	if (select->index < 0)
+		select->index = 0;
 }
 
 void	ft_arrow_bot(t_select *select)
@@ -48,6 +50,8 @@ void	ft_arrow_bot(t_select *select)
 	}
 	else
 		select->index++;
+	if (select->index < 0)
+		select->index = 0;
 }
 
 void	ft_arrow_left(t_select *select)
@@ -68,6 +72,8 @@ void	ft_arrow_left(t_select *select)
 		select->x = select->max_len * select->col - select->max_len;
 		select->y = select->last_li - 1;
 	}
+	if (select->index < 0)
+		select->index = 0;
 }
 
 void	ft_arrow_right(t_select *select)
@@ -86,4 +92,6 @@ void	ft_arrow_right(t_select *select)
 	}
 	else
 		select->index += select->max_li - 1;
+	if (select->index < 0)
+		select->index = 0;
 }

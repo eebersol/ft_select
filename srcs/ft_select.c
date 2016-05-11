@@ -23,29 +23,27 @@ void	ft_check_event(void)
 
 void	ft_spot_control(t_select *select)
 {
-	char	buffer[2000];
+	char	b[2000];
 	int		ret;
 
 	ret = 0;
-	while ((ret = read(0, buffer, 5)) != -1)
+	while ((ret = read(0, b, 5)) != -1)
 	{
 		if (ESC)
 			ft_key_exit(select);
 		else if (DELETE)
 			ft_delete_key(select);
 		else if (IS_ARROW)
-			ft_move_where(select, buffer);
+			ft_move_where(select, b);
 		else if (ENTER)
 			ft_return_key(select);
 		else if (CNTRL_C)
 			ft_key_exit(select);
 		else if (SPACE)
-		{
 			ft_space_key(select);
-		}
 		else if (BACK_SPACE)
 			ft_delete_key(select);
-		ft_bzero(buffer, 5);
+		ft_bzero(b, 5);
 	}
 }
 
